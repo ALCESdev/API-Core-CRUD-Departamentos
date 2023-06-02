@@ -18,7 +18,7 @@ namespace API_CRUD_Departamentos.Repositories
 
         public Departamento BuscarDepartamento(int deptno)
         {
-            return this.context.Departamentos.SingleOrDefault(x => x.Numero == deptno);
+            return context.Departamentos.SingleOrDefault(x => x.Numero == deptno);
         }
 
         public void InsertarDepartamento(int num, String nom, String loc)

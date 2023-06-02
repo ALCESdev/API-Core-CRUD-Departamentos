@@ -1,4 +1,17 @@
+using API_CRUD_Departamentos.Data;
+using API_CRUD_Departamentos.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Inyeccion de dependencias
+String? cadenaconexion = builder.Configuration.GetConnectionString("cadenahospitalazure");
+
+builder.Services.AddTransient<RepositoryDepartamentos>();
+builder.Services.AddDbContext<DepartamentosContext>(options => options.UseSqlServer(cadenaconexion));
+
+builder.Services.AddControllers();
+
 
 // Add services to the container.
 
