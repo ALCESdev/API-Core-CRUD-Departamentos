@@ -13,7 +13,7 @@ namespace API_CRUD_Departamentos.Repositories
 
         public List<Departamento> GetDepartamentos()
         {
-            return this.context.Departamentos.ToList();
+            return context.Departamentos.ToList();
         }
 
         public Departamento BuscarDepartamento(int deptno)
@@ -27,8 +27,8 @@ namespace API_CRUD_Departamentos.Repositories
             dept.Numero = num;
             dept.Nombre = nom;
             dept.Localidad = loc;
-            this.context.Departamentos.Add(dept);
-            this.context.SaveChanges();
+            context.Departamentos.Add(dept);
+            context.SaveChanges();
         }
 
         public void ModificarDepartamento(int num, String nom, String loc)
@@ -36,15 +36,15 @@ namespace API_CRUD_Departamentos.Repositories
             Departamento dept = this.BuscarDepartamento(num);
             dept.Nombre = nom;
             dept.Localidad = loc;
-            this.context.SaveChanges();
+            context.SaveChanges();
         }
 
         public void EliminarDepartamento(int num)
         {
             Departamento dept = this.BuscarDepartamento(num);
-            this.context.Departamentos.Remove(dept);
-            this.context.SaveChanges();
+
+            context.Departamentos.Remove(dept);
+            context.SaveChanges();
         }
     }
-
 }

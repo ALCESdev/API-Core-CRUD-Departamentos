@@ -9,6 +9,7 @@ namespace API_CRUD_Departamentos.Controllers
     public class DepartamentosController : ControllerBase
     {
         RepositoryDepartamentos repo;
+
         public DepartamentosController(RepositoryDepartamentos repo)
         {
             this.repo = repo;
@@ -17,34 +18,33 @@ namespace API_CRUD_Departamentos.Controllers
         [HttpGet]
         public ActionResult<List<Departamento>> GetDepartamentos()
         {
-            return this.repo.GetDepartamentos();
+            return repo.GetDepartamentos();
         }
 
         [HttpGet("{id}")]
         public ActionResult<Departamento> GetDepartamento(int id)
         {
-            return this.repo.BuscarDepartamento(id);
+            return repo.BuscarDepartamento(id);
         }
 
         //api/Departamentos --> POST
         [HttpPost]
         public void InsertarDepartamento(Departamento departamento)
         {
-            this.repo.InsertarDepartamento
-                (departamento.Numero, departamento.Nombre, departamento.Localidad);
+            repo.InsertarDepartamento(departamento.Numero, departamento.Nombre, departamento.Localidad);
         }
 
         [HttpPut]
         public void ModificarDepartamento(Departamento departamento)
         {
-            this.repo.ModificarDepartamento(departamento.Numero, departamento.Nombre, departamento.Localidad);
+            repo.ModificarDepartamento(departamento.Numero, departamento.Nombre, departamento.Localidad);
         }
 
         //api/Departamentos/{id}
         [HttpDelete("{id}")]
         public void EliminarDepartamento(int id)
         {
-            this.repo.EliminarDepartamento(id);
+            repo.EliminarDepartamento(id);
         }
     }
 
